@@ -1,0 +1,24 @@
+.text-area{
+    resize: none;
+    height:100%;
+    width:100%;
+    margin:0;
+}
+
+.text-area-red{
+    width:100%;
+    resize: none;
+    height:35vh;
+    width:67vw;
+
+}
+
+.body-text-row
+{
+    display:flex;
+    flex-direction: row;
+    margin:5px 10px;
+    flex-grow:1;
+    padding:0px;
+    height:75%
+}

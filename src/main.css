@@ -1,0 +1,20 @@
+.main{
+    background-color:#dfd5ed;
+    height:90%
+}
+
+
+.title-row{
+    display:flex;
+    flex-direction: row;
+    padding:10px;
+    height:20%
+}
+
+.note-title{
+    position:relative;
+}
+
+.body-row{
+    height:80%
+}

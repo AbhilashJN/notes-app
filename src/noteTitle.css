@@ -1,0 +1,52 @@
+.note-title{
+    display:flex;
+    flex-direction: column;
+    margin:5px;
+    height:100%;
+
+    width:100%
+}
+
+.row
+{
+    display:flex;
+    flex-direction: row;
+    margin:5px 0px;
+    flex-grow:1;
+    height:50%;
+    width:100%
+}
+
+
+.body-top-row{
+    height:2vh;
+flex-grow: 1}
+
+.left-column
+{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:50%;
+    justify-content:center;
+    font-weight:bold;
+    flex-grow:1
+}
+
+.right-column
+{
+    display:flex;
+    width:50%;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    flex-grow: 1;
+
+}
+
+
+
+    .input-title{
+        width:100%;
+        height:55px
+    }

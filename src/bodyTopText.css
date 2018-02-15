@@ -1,0 +1,14 @@
+.body-top-text{
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    color:#222222;
+    margin:5px 10px;
+    align-items: center;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+
+}
+
+

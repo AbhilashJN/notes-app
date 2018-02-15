@@ -1,0 +1,11 @@
+.header{
+    text-align:center;
+    background-color:#fefefe;
+    height:5%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 500;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
