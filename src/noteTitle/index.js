@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
 import './noteTitle.css';
-import LangBtn from './langBtn';
+import LangBtn from '../langBtn';
 
 class NoteTitle extends React.Component {
   constructor(props) {
@@ -20,7 +18,7 @@ class NoteTitle extends React.Component {
           </div>
         </div>
         <div className="row">
-          <input type="text" className="input-title" />
+          <input type="text" value={this.props.titleText} className="input-title" onChange={(e) => { this.props.showTitle(e); }} />
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 .container{
     border-radius: 5px;
     border:1px solid black;
-    height:100vh;
+    height:99vh;
     width:70vw;
     margin:auto;
     display:flex;
