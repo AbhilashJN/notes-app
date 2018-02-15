@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './charsLeft.css';
 
 
@@ -13,6 +14,15 @@ class CharsLeft extends React.Component {
     );
   }
 }
+
+
+CharsLeft.defaultProps = {
+  number: 0,
+};
+
+CharsLeft.propTypes = {
+  number: PropTypes.number,
+};
 
 
 export default CharsLeft;

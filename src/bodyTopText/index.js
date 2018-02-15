@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './bodyTopText.css';
 import noteicon from '../note.svg';
 
@@ -12,6 +13,16 @@ class BodyTopText extends React.Component {
     );
   }
 }
+
+
+BodyTopText.defaultProps = {
+  text: '',
+};
+
+BodyTopText.propTypes = {
+  text: PropTypes.string,
+
+};
 
 
 export default BodyTopText;

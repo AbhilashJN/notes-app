@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './saveBtn.css';
 
 
@@ -11,6 +12,16 @@ class SaveBtn extends React.Component {
     );
   }
 }
+
+SaveBtn.defaultProps = {
+  text: '',
+  saveNote: () => {},
+};
+
+SaveBtn.propTypes = {
+  text: PropTypes.string,
+  saveNote: PropTypes.func,
+};
 
 
 export default SaveBtn;

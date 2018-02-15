@@ -26,7 +26,9 @@ class Main extends React.Component {
       return;
     }
     const currNote = { title: this.state.currTitle, content: this.state.currContent };
-    this.state.notesArr.push(currNote);
+    const notes = this.state.notesArr;
+    notes.push(currNote);
+    this.setState({ notesArr: notes });
     console.log(this.state);
     this.setState({ currTitle: '' });
     this.setState({ currContent: '' });

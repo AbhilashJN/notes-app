@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './footer.css';
 
 
@@ -11,6 +12,15 @@ class Footer extends React.Component {
     );
   }
 }
+
+Footer.defaultProps = {
+  text: 'Footer',
+};
+
+Footer.propTypes = {
+  text: PropTypes.string,
+
+};
 
 
 export default Footer;

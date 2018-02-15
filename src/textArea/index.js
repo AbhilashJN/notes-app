@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './textArea.css';
 
 
@@ -7,11 +8,9 @@ class textArea extends React.Component {
     super(props);
     this.state = {
       currClass: 'text-area',
-      value: '',
     };
   }
   checkCount(e) {
-    this.setState({ value: e.target.value });
     if (e.target.value.length === this.props.max) {
       this.setState({ currClass: 'text-area-red' });
     } else {
@@ -26,6 +25,18 @@ class textArea extends React.Component {
     );
   }
 }
+
+textArea.defaultProps = {
+  contentText: '',
+  max: 0,
+  handleChange: () => {},
+};
+
+textArea.propTypes = {
+  contentText: PropTypes.string,
+  max: PropTypes.number,
+  handleChange: PropTypes.func,
+};
 
 
 export default textArea;

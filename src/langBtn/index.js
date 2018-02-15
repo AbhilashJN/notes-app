@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './langBtn.css';
 
 
@@ -11,6 +12,15 @@ class LangBtn extends React.Component {
     );
   }
 }
+
+LangBtn.defaultProps = {
+  text: 'Button',
+};
+
+LangBtn.propTypes = {
+  text: PropTypes.string,
+
+};
 
 
 export default LangBtn;

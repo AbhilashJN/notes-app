@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './noteTitle.css';
 import LangBtn from '../langBtn';
 
@@ -24,6 +25,16 @@ class NoteTitle extends React.Component {
     );
   }
 }
+
+NoteTitle.defaultProps = {
+  titleText: '',
+  showTitle: () => {},
+};
+
+NoteTitle.propTypes = {
+  titleText: PropTypes.string,
+  showTitle: PropTypes.func,
+};
 
 
 export default NoteTitle;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './noteBody.css';
 import BodyTopText from '../bodyTopText';
 import TextArea from '../textArea';
@@ -22,6 +23,17 @@ class NoteBody extends React.Component {
     );
   }
 }
+
+NoteBody.defaultProps = {
+  showCount: () => {},
+  contentText: '',
+};
+
+NoteBody.propTypes = {
+  showCount: PropTypes.func,
+  contentText: PropTypes.string,
+
+};
 
 
 export default NoteBody;
