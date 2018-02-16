@@ -4,9 +4,6 @@ import './noteTitle.css';
 import LangBtn from '../langBtn';
 
 class NoteTitle extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="note-title">
@@ -27,11 +24,13 @@ class NoteTitle extends React.Component {
 }
 
 NoteTitle.defaultProps = {
+  noteTitle: '',
   titleText: '',
   showTitle: () => {},
 };
 
 NoteTitle.propTypes = {
+  noteTitle: PropTypes.string,
   titleText: PropTypes.string,
   showTitle: PropTypes.func,
 };

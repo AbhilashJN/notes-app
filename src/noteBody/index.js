@@ -6,11 +6,6 @@ import TextArea from '../textArea';
 
 
 class NoteBody extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-
   render() {
     return (
       <div className="note-body">
@@ -22,11 +17,13 @@ class NoteBody extends React.Component {
 }
 
 NoteBody.defaultProps = {
+  textMax: 100,
   showCount: () => {},
   contentText: '',
 };
 
 NoteBody.propTypes = {
+  textMax: PropTypes.number,
   showCount: PropTypes.func,
   contentText: PropTypes.string,
 

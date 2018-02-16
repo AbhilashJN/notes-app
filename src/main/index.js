@@ -14,7 +14,6 @@ class Main extends React.Component {
       currContent: this.props.contentText,
       currTitle: this.props.titleText,
       currId: this.props.latestId + 1,
-      notesArr: [],
       mode: this.props.mode,
       editId: this.props.editId,
     };
@@ -27,13 +26,13 @@ class Main extends React.Component {
   }
   saveNote=() => {
     if ((this.state.currTitle.length === 0) || (this.state.currContent.length === 0)) {
+      alert('Enter title and content');
       return;
     }
 
     const currNote = { id: (this.state.editId > 0 ? this.state.editId : this.state.currId), title: this.state.currTitle, content: this.state.currContent };
     let nextID = this.state.currId;
     if (this.state.mode === 'new') { nextID += 1; }
-    console.log(currNote);
     this.props.addNote(currNote);
     this.setState({
       currTitle: '', currContent: '', currId: nextID, editId: -1,
@@ -66,11 +65,21 @@ class Main extends React.Component {
 
 
 Main.defaultProps = {
+  titleText: '',
+  contentText: '',
+  latestId: 0,
+  mode: 'new',
+  editId: -1,
   addNote: () => {},
   changepage: () => {},
 };
 
 Main.propTypes = {
+  titleText: PropTypes.string,
+  contentText: PropTypes.string,
+  latestId: PropTypes.number,
+  mode: PropTypes.string,
+  editId: PropTypes.number,
   addNote: PropTypes.func,
   changepage: PropTypes.func,
 };

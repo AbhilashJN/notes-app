@@ -35,9 +35,6 @@ class Container extends React.Component {
       newLatestId = note.id;
     }
     this.setState({ notesArr: notes, editId: -1, latestId: newLatestId });
-
-
-    console.log(this.state);
   }
 
   changePage=(pageName) => {
@@ -55,8 +52,9 @@ class Container extends React.Component {
     let content = '';
     for (let i = 0; i < this.state.notesArr.length; i += 1) {
       if (this.state.notesArr[i].id === noteID) {
-        title = this.state.notesArr[i].title;
-        content = this.state.notesArr[i].content;
+        ({ title, content } = this.state.notesArr[i]);
+        // title = this.state.notesArr[i].title;
+        // content = this.state.notesArr[i].content;
         break;
       }
     }
