@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { saveNote, updateNote } from '../redux/actions';
 import './container.css';
 import Header from '../header';
 import Main from '../main';
@@ -9,32 +12,23 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      notesArr: [],
       page: 'takeNote',
       titleText: '',
       contentText: '',
-      mode: 'new',
       editId: -1,
       latestId: 0,
     };
   }
   addNote=(note) => {
-    const notes = this.state.notesArr;
-    let edited = false;
-
     let newLatestId = this.state.latestId;
-    for (let i = 0; i < notes.length; i += 1) {
-      if (notes[i].id === note.id) {
-        notes[i] = Object.assign({}, note);
-        edited = true;
-        break;
-      }
-    }
-    if (!edited) {
-      notes.push(note);
+
+    if (this.state.editId < 0) {
       newLatestId = note.id;
+      this.props.saveNoteFn(note);
+    } else {
+      this.props.updateNoteFn(note);
     }
-    this.setState({ notesArr: notes, editId: -1, latestId: newLatestId });
+    this.setState({ editId: -1, latestId: newLatestId });
   }
 
   changePage=(pageName) => {
@@ -42,7 +36,6 @@ class Container extends React.Component {
       page: pageName,
       titleText: '',
       contentText: '',
-      mode: 'new',
       editId: -1,
     });
   }
@@ -50,11 +43,9 @@ class Container extends React.Component {
   editMode=(noteID) => {
     let title = '';
     let content = '';
-    for (let i = 0; i < this.state.notesArr.length; i += 1) {
-      if (this.state.notesArr[i].id === noteID) {
-        ({ title, content } = this.state.notesArr[i]);
-        // title = this.state.notesArr[i].title;
-        // content = this.state.notesArr[i].content;
+    for (let i = 0; i < this.props.notes.length; i += 1) {
+      if (this.props.notes[i].id === noteID) {
+        ({ title, content } = this.props.notes[i]);
         break;
       }
     }
@@ -62,14 +53,23 @@ class Container extends React.Component {
       page: 'takeNote',
       titleText: title,
       contentText: content,
-      mode: 'edit',
       editId: noteID,
     });
   }
 
 
   render() {
-    const currPage = (this.state.page === 'takeNote' ? (<Main latestId={this.state.latestId} editId={this.state.editId} mode={this.state.mode} titleText={this.state.titleText} contentText={this.state.contentText} addNote={this.addNote} changepage={this.changePage} mode={this.state.mode} />) : (<ViewNotes editMode={this.editMode} changepage={this.changePage} notes={this.state.notesArr} />));
+    const currPage = (
+      this.state.page === 'takeNote' ?
+        (<Main
+          latestId={this.state.latestId}
+          editId={this.state.editId}
+          titleText={this.state.titleText}
+          contentText={this.state.contentText}
+          addNote={this.addNote}
+          changepage={this.changePage}
+        />)
+        : (<ViewNotes editMode={this.editMode} changepage={this.changePage} />));
     return (
       <div className="container">
         <Header text="Start Taking Notes" />
@@ -81,5 +81,29 @@ class Container extends React.Component {
 }
 
 
-export default Container;
+const mapStateToProps = state => ({ notes: state.noteStorage.notes });
+const mapDispatchToProps = dispatch => ({
+  saveNoteFn: (currentNote) => {
+    dispatch(saveNote(currentNote));
+  },
+  updateNoteFn: (currentNote) => {
+    dispatch(updateNote(currentNote));
+  },
+});
+
+
+Container.defaultProps = {
+  notes: [],
+  saveNoteFn: () => {},
+  updateNoteFn: () => {},
+};
+
+Container.propTypes = {
+  notes: PropTypes.arrayOf(Object),
+  saveNoteFn: PropTypes.func,
+  updateNoteFn: PropTypes.func,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
 

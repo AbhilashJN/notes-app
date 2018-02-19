@@ -26,11 +26,15 @@ class Main extends React.Component {
   }
   saveNote=() => {
     if ((this.state.currTitle.length === 0) || (this.state.currContent.length === 0)) {
-      alert('Enter title and content');
+      // alert('Enter title and content');
       return;
     }
 
-    const currNote = { id: (this.state.editId > 0 ? this.state.editId : this.state.currId), title: this.state.currTitle, content: this.state.currContent };
+    const currNote = {
+      id: (this.state.editId > 0 ? this.state.editId : this.state.currId),
+      title: this.state.currTitle,
+      content: this.state.currContent,
+    };
     let nextID = this.state.currId;
     if (this.state.mode === 'new') { nextID += 1; }
     this.props.addNote(currNote);
@@ -46,7 +50,13 @@ class Main extends React.Component {
           <NoteTitle noteTitle="Note Title" showTitle={this.showTitle} titleText={this.state.currTitle} mode={this.state.mode} noteid={this.currId} />
         </div>
         <div className="body-row" >
-          <NoteBody showCount={this.showCount} contentText={this.state.currContent} textMax={this.state.textMax} mode={this.state.mode} noteid={this.currId} />
+          <NoteBody
+            showCount={this.showCount}
+            contentText={this.state.currContent}
+            textMax={this.state.textMax}
+            mode={this.state.mode}
+            noteid={this.currId}
+          />
         </div>
         <div className="body-bottom-row">
           <div className="body-bottom-col1">

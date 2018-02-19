@@ -20,7 +20,12 @@ class textArea extends React.Component {
   render() {
     return (
       <div className="body-text-row">
-        <textarea value={this.props.contentText} className={this.state.currClass} maxLength={this.props.max} onInput={(e) => { this.checkCount(e); this.props.handleChange(e); }} />
+        <textarea
+          value={this.props.contentText}
+          className={this.state.currClass}
+          maxLength={this.props.max}
+          onChange={(e) => { this.checkCount(e); this.props.handleChange(e); }}
+        />
       </div>
     );
   }

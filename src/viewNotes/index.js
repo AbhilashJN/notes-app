@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './viewNotes.css';
 import NoteDisplay from '../noteDisplay';
 
 class ViewNotes extends React.Component {
   render() {
-    const notesElements = this.props.notes.map(note => (<NoteDisplay title={note.title} content={note.content} id={note.id} key={note.id} editMode={this.props.editMode} />));
+    const notesElements = this.props.notes.map(note => (
+      <NoteDisplay
+        title={note.title}
+        content={note.content}
+        id={note.id}
+        key={note.id}
+        editMode={this.props.editMode}
+      />));
     return (
 
       <div className="main">
@@ -33,5 +41,8 @@ ViewNotes.propTypes = {
   editMode: PropTypes.func,
 };
 
-export default ViewNotes;
+const mapStatesToProps = state => ({ notes: state.noteStorage.notes });
+
+
+export default connect(mapStatesToProps, null)(ViewNotes);
 
