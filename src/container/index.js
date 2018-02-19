@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { saveNote, updateNote } from '../redux/actions';
 import './container.css';
 import Header from '../header';
-import Main from '../main';
+import TakeNote from '../takeNote';
 import Footer from '../footer';
 import ViewNotes from '../viewNotes';
 
@@ -61,7 +61,7 @@ class Container extends React.Component {
   render() {
     const currPage = (
       this.state.page === 'takeNote' ?
-        (<Main
+        (<TakeNote
           latestId={this.state.latestId}
           editId={this.state.editId}
           titleText={this.state.titleText}

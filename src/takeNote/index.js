@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './main.css';
+import './takeNote.css';
 import NoteTitle from '../noteTitle';
 import NoteBody from '../noteBody';
 import SaveBtn from '../saveBtn';
 import CharsLeft from '../charsLeft';
 
-class Main extends React.Component {
+class TakeNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,7 +74,7 @@ class Main extends React.Component {
 }
 
 
-Main.defaultProps = {
+TakeNote.defaultProps = {
   titleText: '',
   contentText: '',
   latestId: 0,
@@ -84,7 +84,7 @@ Main.defaultProps = {
   changepage: () => {},
 };
 
-Main.propTypes = {
+TakeNote.propTypes = {
   titleText: PropTypes.string,
   contentText: PropTypes.string,
   latestId: PropTypes.number,
@@ -94,5 +94,5 @@ Main.propTypes = {
   changepage: PropTypes.func,
 };
 
-export default Main;
+export default TakeNote;
 
